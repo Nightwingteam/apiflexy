@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Connector AI - Integration Example</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        
+        .feature-card {
+            border: 2px solid #e1e8ed;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+        }
+        
+        .feature-card h3 {
+            color: #667eea;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .interactive-section {
+            background: #f8f9ff;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 4px solid #667eea;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.2s ease;
+            margin: 5px;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+        }
+        
+        button:disabled {
+            opacity: 0.6;
+            transform: none;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e8ed;
+            border-radius: 8px;
+            font-size: 16px;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        
+        input:focus, textarea:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+        
+        .stats-banner {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .stats-banner h2 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        
+        .api-result {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        code {
+            background: #f1f3f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        
+        .demo-section {
+            border: 2px dashed #667eea;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            background: #f8f9ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <h1>🚀 API Connector AI</h1>
+        <p class="subtitle">Connect to 130+ APIs with Natural Language - Zero Setup Required!</p>
+        
+        <!-- Stats Banner -->
+        <div class="stats-banner">
+            <h2>134+ API Providers</h2>
+            <p>Across 27+ Industries • AI/ML, Social Media, Gaming, Travel, E-commerce & More!</p>
+        </div>
+
+        <!-- Feature Demonstration Grid -->
+        <div class="feature-grid">
+            <!-- Auto-Loading Example -->
+            <div class="feature-card">
+                <h3>🌤️ Auto-Loading Weather</h3>
+                <p>This data loads automatically when the page loads:</p>
+                <div data-api-query="Get weather in NYC">Loading...</div>
+                <small><strong>HTML:</strong> <code>&lt;div data-api-query="Get weather in NYC"&gt;</code></small>
+            </div>
+
+            <!-- GitHub Integration Example -->
+            <div class="feature-card">
+                <h3>🐙 GitHub Integration</h3>
+                <p>Load your GitHub data with a button click:</p>
+                <button data-api-action="query" 
+                        data-api-query="Get my GitHub profile stats"
+                        data-target="#github-results">
+                    Load My GitHub Stats
+                </button>
+                <div id="github-results" style="margin-top: 15px; padding: 10px; background: #f5f5f5; border-radius: 5px; min-height: 40px;">
+                    Click the button to load your GitHub data
+                </div>
+                <small><strong>HTML:</strong> <code>&lt;button data-api-action="query" data-api-query="..."&gt;</code></small>
+            </div>
+
+            <!-- AI Chat Interface -->
+            <div class="feature-card">
+                <h3>🤖 AI Assistant</h3>
+                <p>Ask DeepSeek AI anything:</p>
+                <form data-api-form data-target="#ai-chat" style="margin-bottom: 15px;">
+                    <input type="text" name="query" placeholder="Ask DeepSeek AI anything..." required>
+                    <button type="submit">Ask AI</button>
+                </form>
+                <div id="ai-chat" style="background: #f0f7ff; padding: 15px; border-radius: 8px; min-height: 60px;">
+                    💬 AI responses will appear here...
+                </div>
+                <small><strong>HTML:</strong> <code>&lt;form data-api-form&gt;</code></small>
+            </div>
+
+            <!-- Crypto Prices -->
+            <div class="feature-card">
+                <h3>₿ Cryptocurrency Prices</h3>
+                <p>Live crypto data on demand:</p>
+                <button data-api-action="query" 
+                        data-api-query="Get Bitcoin and Ethereum current prices"
+                        data-target="#crypto-results">
+                    Get Crypto Prices
+                </button>
+                <div id="crypto-results" style="margin-top: 15px; padding: 10px; background: #fff3e0; border-radius: 5px; min-height: 40px;">
+                    📈 Click to load cryptocurrency prices
+                </div>
+                <small><strong>HTML:</strong> Just add <code>data-api-query</code> attributes!</small>
+            </div>
+
+            <!-- News Feed -->
+            <div class="feature-card">
+                <h3>📰 Latest News</h3>
+                <p>Get trending technology news:</p>
+                <div data-api-query="Get latest technology news headlines" 
+                     data-auto-load="false"
+                     style="background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 8px; margin: 10px 0; min-height: 60px;">
+                    📰 News will load here...
+                </div>
+                <button onclick="document.querySelector('[data-api-query*=news]').click()">Load Tech News</button>
+                <small><strong>Features:</strong> Works with any news API!</small>
+            </div>
+
+            <!-- Social Media Integration -->
+            <div class="feature-card">
+                <h3>📱 Social Media</h3>
+                <p>Connect to Twitter, Instagram, LinkedIn, and more:</p>
+                <form data-api-form data-target="#social-results">
+                    <input type="text" name="query" placeholder="e.g., Get my latest tweets" required>
+                    <button type="submit">Connect Social</button>
+                </form>
+                <div id="social-results" style="margin-top: 15px; padding: 10px; background: #f3e5f5; border-radius: 5px; min-height: 40px;">
+                    📱 Social media data will appear here
+                </div>
+                <small><strong>Supports:</strong> Twitter, Facebook, Instagram, LinkedIn, Discord, Slack</small>
+            </div>
+        </div>
+
+        <!-- Interactive Demo Section -->
+        <div class="interactive-section">
+            <h2>🎮 Try It Yourself!</h2>
+            <p>Enter any natural language query to test our 134+ API providers:</p>
+            
+            <form data-api-form data-target="#custom-results" style="margin-bottom: 20px;">
+                <textarea name="query" rows="3" placeholder="Try queries like:
+• Get weather in Tokyo
+• Show me trending GitHub repositories  
+• Get Bitcoin price in USD
+• Find restaurants near New York
+• Generate an AI image of a sunset
+• Get latest tech news headlines"></textarea>
+                <button type="submit" style="width: 100%;">🚀 Execute Query</button>
+            </form>
+            
+            <div id="custom-results" style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #e1e8ed; min-height: 100px;">
+                <p style="text-align: center; color: #666; margin: 0;">
+                    🎯 Enter a query above and see the magic happen!<br/>
+                    <small>Supports 134+ APIs across AI, Social Media, Weather, Finance, Gaming, Travel, and more!</small>
+                </p>
+            </div>
+        </div>
+
+        <!-- Integration Instructions -->
+        <div class="demo-section">
+            <h2>📝 How to Add to Your Website</h2>
+            <p><strong>Step 1:</strong> Add one script tag to your HTML:</p>
+            <code style="display: block; padding: 15px; background: #f8f9fa; border-radius: 8px; margin: 10px 0;">
+                &lt;script src="http://localhost:3000/api-connector-sdk.js" 
+                        data-api-key="your-api-key"&gt;&lt;/script&gt;
+            </code>
+            
+            <p><strong>Step 2:</strong> Add data attributes to any HTML element:</p>
+            <code style="display: block; padding: 15px; background: #f8f9fa; border-radius: 8px; margin: 10px 0;">
+                &lt;div data-api-query="Get weather in London"&gt;Loading...&lt;/div&gt;<br/>
+                &lt;button data-api-action="query" data-api-query="Get my GitHub repos"&gt;Load Data&lt;/button&gt;<br/>
+                &lt;form data-api-form&gt;&lt;input name="query"&gt;&lt;button&gt;Search&lt;/button&gt;&lt;/form&gt;
+            </code>
+            
+            <p><strong>That's it!</strong> No complex setup, no new files to create. Works with any existing HTML website.</p>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; margin-top: 40px; padding: 30px; background: #f8f9ff; border-radius: 10px;">
+            <h3>🎉 Ready to Transform Your Website?</h3>
+            <p>Get started with API Connector AI and bring live data to any HTML website in minutes!</p>
+            <div style="margin: 20px 0;">
+                <button onclick="window.open('http://localhost:3000', '_blank')" style="margin: 0 10px;">
+                    🚀 Open API Connector Platform
+                </button>
+                <button onclick="window.open('https://github.com/your-repo', '_blank')" style="margin: 0 10px;">
+                    📚 View Documentation
+                </button>
+            </div>
+            <p style="font-size: 0.9em; color: #666;">
+                <strong>134+ API Providers</strong> • <strong>27+ Industries</strong> • <strong>Zero Setup Required</strong>
+            </p>
+        </div>
+    </div>
+
+    <!-- Load the API Connector AI SDK -->
+    <script src="http://localhost:3000/api-connector-sdk.js" 
+            data-api-key="demo-key"
+            data-base-url="http://localhost:5001"
+            data-debug="true"></script>
+    
+    <!-- Custom event handlers for demo -->
+    <script>
+        // Add some custom styling and interactions for the demo
+        document.addEventListener('DOMContentLoaded', function() {
+            // Customize SDK behavior for demo
+            if (window.apiConnector) {
+                window.apiConnector.on('querySuccess', function({ query, data }) {
+                    console.log('✅ Query succeeded:', query);
+                    console.log('📊 Data received:', data);
+                });
+                
+                window.apiConnector.on('queryError', function({ query, error }) {
+                    console.log('❌ Query failed:', query, error);
+                });
+            }
+            
+            // Add some demo interactivity
+            const buttons = document.querySelectorAll('button[data-api-action]');
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const originalText = this.textContent;
+                    this.textContent = '⏳ Loading...';
+                    this.disabled = true;
+                    
+                    // Re-enable after 3 seconds for demo purposes
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.disabled = false;
+                    }, 3000);
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,42 @@
+{
+  "name": "api-connector-ai",
+  "version": "1.0.0",
+  "description": "Universal API management platform with natural language queries and zero-setup HTML integration",
+  "main": "index.js",
+  "scripts": {
+    "dev": "./start-dev.sh",
+    "start": "./start-dev.sh",
+    "build": "cd frontend && npm run build",
+    "install:backend": "cd backend && python -m venv venv && source venv/bin/activate && pip install -r requirements.txt",
+    "install:frontend": "cd frontend && npm install",
+    "install:all": "npm run install:backend && npm run install:frontend",
+    "start:backend": "cd backend && source venv/bin/activate && python app.py",
+    "start:frontend": "cd frontend && npm start",
+    "test": "cd frontend && npm test",
+    "lint": "cd frontend && npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/api-connector-ai.git"
+  },
+  "keywords": [
+    "api",
+    "connector",
+    "management",
+    "natural-language",
+    "integration",
+    "react",
+    "flask",
+    "dashboard"
+  ],
+  "author": "API Connector AI Team",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yourusername/api-connector-ai/issues"
+  },
+  "homepage": "https://github.com/yourusername/api-connector-ai#readme",
+  "engines": {
+    "node": ">=16.0.0",
+    "python": ">=3.8.0"
+  }
+}
