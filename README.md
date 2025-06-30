@@ -4,6 +4,12 @@ A universal API management platform by Nightwing Team that allows you to connect
 
 ![API Connector AI Dashboard](https://img.shields.io/badge/React-18.x-blue) ![Flask](https://img.shields.io/badge/Flask-2.x-green) ![SQLite](https://img.shields.io/badge/SQLite-3.x-orange) ![Material--UI](https://img.shields.io/badge/Material--UI-5.x-purple)
 
+## 🌐 Live Demo
+
+**🚀 Try ApiFlexy Now:** [https://apiflexy.vercel.app](https://apiflexy.vercel.app)
+
+Experience the full power of ApiFlexy with our live demo. Test API connections, run natural language queries, and explore 134+ pre-configured APIs across 27+ industries.
+
 ## ✨ Features
 
 - **🔌 134+ Pre-configured APIs** - Ready-to-use templates for popular services
@@ -60,8 +66,9 @@ A universal API management platform by Nightwing Team that allows you to connect
    ```
 
 5. **Access the Application**
-   - Dashboard: http://localhost:3000
-   - API Backend: http://localhost:5001
+   - **🌐 Live Demo**: https://apiflexy.vercel.app
+   - Dashboard (Local): http://localhost:3000
+   - API Backend (Local): http://localhost:5001
 
 ## 🏗️ Project Structure
 
@@ -103,7 +110,7 @@ The system comes with 134+ pre-configured API providers. You can add custom prov
 
 ### 1. Dashboard Interface
 
-Access the main dashboard at `http://localhost:3000` to:
+Access the main dashboard at `https://apiflexy.vercel.app` (or `http://localhost:3000` for local development) to:
 - Browse available API providers
 - Create and manage API connections
 - Test connections before integration
