@@ -232,7 +232,7 @@ See the [LICENSE](LICENSE) file for complete terms and conditions.
 
 ## 🆘 Support
 
-- 📧 Email: support@nightwingteam.com
+- 📧 Email: Contact@nightwingdigital.co
 - 💬 Discord: [Join our community](https://discord.gg/nightwingteam)
 - 📖 Documentation: [Full docs](https://github.com/Nightwingteam/apiflexy/wiki)
 - 🐛 Issues: [GitHub Issues](https://github.com/Nightwingteam/apiflexy/issues)

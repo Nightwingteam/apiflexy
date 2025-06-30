@@ -76,7 +76,7 @@ ApiFlexy is available under a dual licensing model:
 
 ### **Contact Nightwing Team**
 
-📧 **Email**: commercial@nightwingteam.com
+📧 **Email**: Contact@nightwingdigital.co
 📞 **Phone**: [Your Phone Number]
 🌐 **Website**: [Your Website]
 
@@ -134,8 +134,8 @@ A: License transfers are possible with approval from Nightwing Team.
 
 **Nightwing Team Commercial Licensing**
 
-📧 **Email**: commercial@nightwingteam.com
-📧 **Legal**: legal@nightwingteam.com
+📧 **Email**: Contact@nightwingdigital.co
+📧 **Legal**: Contact@nightwingdigital.co
 📞 **Phone**: [Your Phone Number]
 🌐 **Website**: [Your Website]
 📍 **Address**: [Your Business Address]
