@@ -50,6 +50,9 @@ cd apiflexy
 
 ### Option 3: Manual Setup
 ```bash
+# Initial setup
+./setup.sh
+
 # Backend
 cd backend
 source venv/bin/activate
@@ -63,6 +66,8 @@ npm start
 **Local URLs:**
 - Frontend: http://localhost:3000
 - Backend API: http://localhost:8000
+
+**📚 Note**: All scripts and detailed documentation are organized in the [`docs/`](docs/) directory.
 
 ## 📊 System Status
 
@@ -167,8 +172,11 @@ The live demo is automatically deployed to GitHub Pages via GitHub Actions.
 
 ### Manual Deployment
 ```bash
-# Deploy to GitHub Pages
+# Deploy to GitHub Pages (symlinked script)
 ./deploy-github-pages.sh
+
+# Or use the full path
+./docs/scripts/deploy-github-pages.sh
 ```
 
 ### Alternative Deployments
@@ -176,6 +184,8 @@ The live demo is automatically deployed to GitHub Pages via GitHub Actions.
 - **Railway**: Modern cloud deployment
 - **Docker**: Containerized deployment
 - **Self-hosted**: Any static hosting service
+
+**📚 All Scripts**: Complete automation scripts are available in [`docs/scripts/`](docs/scripts/)
 
 ## 📋 API Documentation
 
