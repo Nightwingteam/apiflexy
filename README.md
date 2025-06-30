@@ -6,7 +6,7 @@ A universal API management platform by Nightwing Team that allows you to connect
 
 ## 🌐 Live Demo
 
-**🚀 Try ApiFlexy Now:** [https://apiflexy-p0ny9lzig-nightwings-projects-ae973569.vercel.app](https://apiflexy-p0ny9lzig-nightwings-projects-ae973569.vercel.app)
+**🚀 Try ApiFlexy Now:** [https://apiflexy-lu2i9of6c-nightwings-projects-ae973569.vercel.app](https://apiflexy-lu2i9of6c-nightwings-projects-ae973569.vercel.app)
 
 Experience the full power of ApiFlexy with our live demo. Test API connections, run natural language queries, and explore 134+ pre-configured APIs across 27+ industries.
 
@@ -66,7 +66,7 @@ Experience the full power of ApiFlexy with our live demo. Test API connections, 
    ```
 
 5. **Access the Application**
-   - **🌐 Live Demo**: https://apiflexy-p0ny9lzig-nightwings-projects-ae973569.vercel.app
+   - **🌐 Live Demo**: https://apiflexy-lu2i9of6c-nightwings-projects-ae973569.vercel.app
    - Dashboard (Local): http://localhost:3000
    - API Backend (Local): http://localhost:5001
 
@@ -110,7 +110,7 @@ The system comes with 134+ pre-configured API providers. You can add custom prov
 
 ### 1. Dashboard Interface
 
-Access the main dashboard at `https://apiflexy-p0ny9lzig-nightwings-projects-ae973569.vercel.app` (or `http://localhost:3000` for local development) to:
+Access the main dashboard at `https://apiflexy-lu2i9of6c-nightwings-projects-ae973569.vercel.app` (or `http://localhost:3000` for local development) to:
 - Browse available API providers
 - Create and manage API connections
 - Test connections before integration
