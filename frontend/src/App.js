@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Box, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import { Box, CssBaseline, ThemeProvider, createTheme, useMediaQuery } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -19,6 +19,7 @@ import Notifications from './pages/Notifications';
 // Components
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
+import MobileLayout from './components/MobileLayout';
 
 // Modern theme with better colors and typography
 const theme = createTheme({
@@ -109,41 +110,53 @@ const ContentArea = styled(Box)(({ theme }) => ({
 }));
 
 function App() {
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
+  const routes = (
+    <Routes>
+      <Route path="/" element={<Dashboard />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/connections" element={<Connections />} />
+      <Route path="/query" element={<QueryInterface />} />
+      <Route path="/history" element={<History />} />
+      <Route path="/docs" element={<Documentation />} />
+      <Route path="/integration" element={<Integration />} />
+      <Route path="/explorer" element={<Explorer />} />
+      <Route path="/settings" element={<Settings />} />
+      <Route path="/notifications" element={<Notifications />} />
+    </Routes>
+  );
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppContainer>
-        <Sidebar />
-        <MainContent>
-          <Header />
-          <ContentArea>
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/connections" element={<Connections />} />
-              <Route path="/query" element={<QueryInterface />} />
-              <Route path="/history" element={<History />} />
-              <Route path="/docs" element={<Documentation />} />
-              <Route path="/integration" element={<Integration />} />
-              <Route path="/explorer" element={<Explorer />} />
-              <Route path="/settings" element={<Settings />} />
-              <Route path="/notifications" element={<Notifications />} />
-            </Routes>
-          </ContentArea>
-        </MainContent>
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
-      </AppContainer>
+      {isMobile ? (
+        <MobileLayout>
+          {routes}
+        </MobileLayout>
+      ) : (
+        <AppContainer>
+          <Sidebar />
+          <MainContent>
+            <Header />
+            <ContentArea>
+              {routes}
+            </ContentArea>
+          </MainContent>
+        </AppContainer>
+      )}
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </ThemeProvider>
   );
 }

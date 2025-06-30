@@ -1,8 +1,8 @@
 // API Configuration for different environments
 const config = {
   development: {
-    API_BASE_URL: 'http://localhost:5001',
-    WS_BASE_URL: 'ws://localhost:5001'
+    API_BASE_URL: 'http://localhost:8000',
+    WS_BASE_URL: 'ws://localhost:8000'
   },
   production: {
     API_BASE_URL: process.env.REACT_APP_API_URL || window.location.origin,

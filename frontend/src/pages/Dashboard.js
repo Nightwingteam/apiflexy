@@ -36,6 +36,8 @@ import {
   CardHeader,
   Tabs,
   Tab,
+  useTheme,
+  useMediaQuery,
 } from '@mui/material';
 import {
   TrendingUp as TrendingUpIcon,
@@ -81,6 +83,8 @@ const fetchProviders = async () => {
 
 function Dashboard() {
   const navigate = useNavigate();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [selectedTab, setSelectedTab] = useState(0);
   const [realTimeMode, setRealTimeMode] = useState(true);
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -258,21 +262,43 @@ function Dashboard() {
   return (
     <Box>
       {/* Header */}
-      <Box sx={{ mb: 4 }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
+      <Box sx={{ mb: isMobile ? 2 : 4 }}>
+        <Box sx={{ 
+          display: 'flex', 
+          flexDirection: isMobile ? 'column' : 'row',
+          justifyContent: 'space-between', 
+          alignItems: isMobile ? 'stretch' : 'flex-start', 
+          mb: 2,
+          gap: isMobile ? 2 : 0
+        }}>
           <Box>
-            <Typography variant="h3" fontWeight={800} gutterBottom sx={{ 
-              background: 'linear-gradient(45deg, #6366f1, #8b5cf6)',
-              backgroundClip: 'text',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-            }}>
-              API Connector Dashboard
+            <Typography 
+              variant={isMobile ? "h4" : "h3"} 
+              fontWeight={800} 
+              gutterBottom 
+              sx={{ 
+                background: 'linear-gradient(45deg, #6366f1, #8b5cf6)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              {isMobile ? "ApiFlexy Dashboard" : "API Connector Dashboard"}
             </Typography>
-            <Typography variant="h6" color="text.secondary" gutterBottom>
+            <Typography 
+              variant={isMobile ? "body1" : "h6"} 
+              color="text.secondary" 
+              gutterBottom
+            >
               Monitor your API connections, query performance, and system health
             </Typography>
-            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 1 }}>
+            <Box sx={{ 
+              display: 'flex', 
+              flexDirection: isMobile ? 'column' : 'row',
+              alignItems: isMobile ? 'stretch' : 'center', 
+              gap: isMobile ? 1 : 2, 
+              mt: 1 
+            }}>
               <Chip 
                 icon={<AccessTimeIcon />} 
                 label={`Last updated: ${currentTime.toLocaleTimeString()}`}
@@ -291,21 +317,31 @@ function Dashboard() {
               />
             </Box>
           </Box>
-          <Box sx={{ display: 'flex', gap: 1 }}>
+          <Box sx={{ 
+            display: 'flex', 
+            flexDirection: isMobile ? 'column' : 'row',
+            gap: 1,
+            width: isMobile ? '100%' : 'auto'
+          }}>
             <Tooltip title="Refresh data">
               <IconButton 
                 onClick={() => window.location.reload()}
-                sx={{ bgcolor: 'primary.light', color: 'white' }}
+                sx={{ 
+                  bgcolor: 'primary.light', 
+                  color: 'white',
+                  alignSelf: isMobile ? 'center' : 'auto'
+                }}
               >
                 <RefreshIcon />
               </IconButton>
             </Tooltip>
             <Button
               variant="contained"
-              size="large"
+              size={isMobile ? "medium" : "large"}
               startIcon={<LaunchIcon />}
               onClick={() => navigate('/connections')}
               sx={{ px: 3 }}
+              fullWidth={isMobile}
             >
               Add API Connection
             </Button>
@@ -354,7 +390,7 @@ function Dashboard() {
       </Box>
 
       {/* Performance Metrics */}
-      <Grid container spacing={3} sx={{ mb: 4 }}>
+      <Grid container spacing={isMobile ? 2 : 3} sx={{ mb: isMobile ? 2 : 4 }}>
         {performanceMetrics.map((metric, index) => (
           <Grid item xs={12} sm={6} lg={3} key={index}>
             <Card 
@@ -424,12 +460,35 @@ function Dashboard() {
         <Tabs 
           value={selectedTab} 
           onChange={(e, newValue) => setSelectedTab(newValue)}
-          sx={{ borderBottom: 1, borderColor: 'divider', px: 2 }}
+          sx={{ 
+            borderBottom: 1, 
+            borderColor: 'divider', 
+            px: isMobile ? 1 : 2 
+          }}
+          variant={isMobile ? "scrollable" : "standard"}
+          scrollButtons={isMobile ? "auto" : false}
+          allowScrollButtonsMobile
         >
-          <Tab icon={<AssessmentIcon />} label="API Performance" />
-          <Tab icon={<TimelineIcon />} label="Recent Activity" />
-          <Tab icon={<ApiIcon />} label="Quick Actions" />
-          <Tab icon={<CodeIcon />} label="Integration Guide" />
+          <Tab 
+            icon={<AssessmentIcon />} 
+            label={isMobile ? "Performance" : "API Performance"}
+            sx={{ minWidth: isMobile ? 'auto' : 160 }}
+          />
+          <Tab 
+            icon={<TimelineIcon />} 
+            label={isMobile ? "Activity" : "Recent Activity"}
+            sx={{ minWidth: isMobile ? 'auto' : 160 }}
+          />
+          <Tab 
+            icon={<ApiIcon />} 
+            label={isMobile ? "Actions" : "Quick Actions"}
+            sx={{ minWidth: isMobile ? 'auto' : 160 }}
+          />
+          <Tab 
+            icon={<CodeIcon />} 
+            label={isMobile ? "Guide" : "Integration Guide"}
+            sx={{ minWidth: isMobile ? 'auto' : 160 }}
+          />
         </Tabs>
 
         <TabPanel value={selectedTab} index={0}>
@@ -461,7 +520,16 @@ function Dashboard() {
                 </Button>
               </Box>
             ) : (
-              <TableContainer component={Paper} sx={{ mt: 2, boxShadow: 'none', border: '1px solid', borderColor: 'divider' }}>
+              <TableContainer 
+                component={Paper} 
+                sx={{ 
+                  mt: 2, 
+                  boxShadow: 'none', 
+                  border: '1px solid', 
+                  borderColor: 'divider',
+                  overflowX: 'auto'
+                }}
+              >
                 <Table>
                   <TableHead>
                     <TableRow sx={{ bgcolor: 'grey.50' }}>

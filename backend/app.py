@@ -779,9 +779,21 @@ def test_api_key(key_id):
             'error': str(e)
         }), 500
 
-# Create tables
+# Create tables safely (only if they don't exist)
 with app.app_context():
-    db.create_all()
+    try:
+        # Check if tables exist before creating
+        from sqlalchemy import inspect
+        inspector = inspect(db.engine)
+        existing_tables = inspector.get_table_names()
+        
+        if not existing_tables:
+            db.create_all()
+            print("✅ Database tables created successfully")
+        else:
+            print(f"✅ Database already initialized with {len(existing_tables)} tables")
+    except Exception as e:
+        print(f"⚠️  Database initialization warning: {e}")
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 8000))
