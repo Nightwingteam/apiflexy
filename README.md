@@ -199,7 +199,7 @@ The live demo is automatically deployed to GitHub Pages via GitHub Actions.
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+We welcome contributions! Please see our [Contributing Guide](docs/CONTRIBUTING.md) for details.
 
 ### Development Workflow
 1. Fork the repository
@@ -207,6 +207,16 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 3. Make your changes
 4. Test thoroughly
 5. Submit a pull request
+
+## 📚 Documentation
+
+All documentation has been organized in the [`docs/`](docs/) directory:
+
+- **[📚 Complete Documentation Index](docs/README.md)** - All guides and documentation
+- **[🚀 Quickstart Guide](docs/QUICKSTART.md)** - Get started in 5 minutes
+- **[🛠️ Deployment Guides](docs/)** - Multiple deployment options
+- **[🤝 Contributing](docs/CONTRIBUTING.md)** - How to contribute
+- **[⚖️ Commercial License](docs/COMMERCIAL-LICENSE.md)** - Licensing information
 
 ## 📄 License
 
@@ -217,7 +227,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **🌐 Live Demo**: https://nightwingteam.github.io/apiflexy/
 - **🐛 Issues**: [GitHub Issues](https://github.com/Nightwingteam/apiflexy/issues)
 - **💬 Discussions**: [GitHub Discussions](https://github.com/Nightwingteam/apiflexy/discussions)
-- **📖 Documentation**: Available in the repository
+- **📧 Contact**: Contact@nightwingdigital.co
 
 ## 🌟 Star History
 
