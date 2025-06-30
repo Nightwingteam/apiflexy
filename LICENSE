@@ -1,16 +1,35 @@
-MIT License
+ApiFlexy License (Non-Commercial Open Source)
 
 Copyright (c) 2024 Nightwing Team
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+of this software and associated documentation files (the "Software"), to use,
+copy, modify, merge, publish, and distribute the Software for NON-COMMERCIAL
+purposes only, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. PERSONAL AND EDUCATIONAL USE: The Software may be used for personal,
+   educational, research, and non-profit purposes without restriction.
+
+2. OPEN SOURCE PROJECTS: The Software may be used in open source projects
+   that are distributed under similar non-commercial licenses.
+
+3. COMMERCIAL USE RESTRICTION: Any commercial use, including but not limited
+   to selling, licensing, or using the Software in commercial products or
+   services, requires explicit written permission from Nightwing Team.
+   Contact: [Your Contact Email]
+
+4. ATTRIBUTION: The above copyright notice and this permission notice shall
+   be included in all copies or substantial portions of the Software.
+
+5. MODIFICATIONS: Modified versions of the Software must clearly indicate
+   the changes made and maintain this license.
+
+6. NO COMMERCIAL DERIVATIVES: Derivative works based on this Software may
+   not be used for commercial purposes without permission.
+
+COMMERCIAL LICENSE AVAILABLE:
+For commercial use, enterprise licenses, and commercial support, please
+contact Nightwing Team at [Your Contact Email].
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -19,5 +38,11 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+DEFINITIONS:
+- "Commercial use" means any use of the Software that is primarily intended
+  for commercial advantage or monetary compensation.
+- "Non-commercial use" means use for personal, educational, research, or
+  non-profit purposes where no monetary compensation is received.
 
 For commercial licensing inquiries, please contact: license@apiconnector.ai 

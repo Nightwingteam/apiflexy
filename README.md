@@ -209,16 +209,33 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 
 ## 📄 License
 
-This project is licensed under a custom license that allows free use for personal, educational, and non-commercial purposes. Commercial use requires explicit permission. See the [LICENSE](LICENSE) file for details.
+**ApiFlexy License (Non-Commercial Open Source)**
 
-For commercial licensing inquiries, please contact: license@apiconnector.ai
+This project is licensed under a custom non-commercial open source license:
+
+✅ **FREE FOR:**
+- Personal use
+- Educational purposes
+- Research projects
+- Non-profit organizations
+- Open source projects
+
+❌ **REQUIRES PERMISSION FOR:**
+- Commercial use
+- Integration in commercial products
+- Selling or licensing the software
+- Commercial derivatives
+
+For commercial licensing and enterprise support, please contact Nightwing Team.
+
+See the [LICENSE](LICENSE) file for complete terms and conditions.
 
 ## 🆘 Support
 
-- 📧 Email: support@apiconnector.ai
-- 💬 Discord: [Join our community](https://discord.gg/apiconnector)
-- 📖 Documentation: [Full docs](https://docs.apiconnector.ai)
-- 🐛 Issues: [GitHub Issues](https://github.com/yourusername/api-connector-ai/issues)
+- 📧 Email: support@nightwingteam.com
+- 💬 Discord: [Join our community](https://discord.gg/nightwingteam)
+- 📖 Documentation: [Full docs](https://github.com/Nightwingteam/apiflexy/wiki)
+- 🐛 Issues: [GitHub Issues](https://github.com/Nightwingteam/apiflexy/issues)
 
 ## 🙏 Acknowledgments
 
@@ -228,4 +245,4 @@ For commercial licensing inquiries, please contact: license@apiconnector.ai
 
 ---
 
-**Made with ❤️ by the API Connector AI Team**
+**Made with ❤️ by Nightwing Team**
