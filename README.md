@@ -1,29 +1,30 @@
 # 🚀 ApiFlexy - AI-Powered API Connector Platform
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Nightwingteam/apiflexy)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-brightgreen)](https://nightwingteam.github.io/apiflexy/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![React](https://img.shields.io/badge/React-18.x-blue.svg)](https://reactjs.org/)
 [![Flask](https://img.shields.io/badge/Flask-3.1.1-green.svg)](https://flask.palletsprojects.com/)
 
 ## 🌟 Live Demo
 
-**🎉 ApiFlexy Phase 1 is now live and fully operational!**
+**🎉 ApiFlexy is now live and publicly accessible!**
 
-- **🌐 Live Demo**: https://apiflexy-k3yxd3fsh-nightwings-projects-ae973569.vercel.app *(Vercel team authentication required)*
-- **💻 Local Development**: http://localhost:3000 *(Recommended for full access)*
+- **🌐 Live Demo**: https://nightwingteam.github.io/apiflexy/ *(Public access - no authentication required)*
+- **💻 Local Development**: http://localhost:3000 *(For full backend functionality)*
 - **🔧 Backend API**: http://localhost:8000 *(Local development)*
 
 ### 📱 Mobile-First Design
-ApiFlexy is now **100% mobile responsive** with adaptive layouts, touch-friendly interfaces, and optimized performance across all devices.
+ApiFlexy is **100% mobile responsive** with adaptive layouts, touch-friendly interfaces, and optimized performance across all devices.
 
-## ✨ What's New in Phase 1
+## ✨ What's New in Latest Release
 
 ### 🔥 Critical Fixes Completed
-- ✅ **134+ API Providers**: All providers now loading correctly (was showing 0)
+- ✅ **134+ API Providers**: All providers now loading correctly
 - ✅ **Python 3.13 Compatible**: Upgraded SQLAlchemy, Flask, and all dependencies
 - ✅ **Database Issues Resolved**: Safe table creation with conflict handling
 - ✅ **Mobile Responsive**: Complete mobile-first design implementation
 - ✅ **Production Ready**: Optimized builds and deployment configuration
+- ✅ **Public Deployment**: Now live on GitHub Pages with no authentication barriers
 
 ### 🎯 Key Features
 - **134+ Pre-configured API Providers** across 15+ categories
@@ -35,14 +36,19 @@ ApiFlexy is now **100% mobile responsive** with adaptive layouts, touch-friendly
 
 ## 🚀 Quick Start
 
-### Option 1: One-Command Startup (Recommended)
+### Option 1: Try Live Demo (Instant Access)
+**Visit**: https://nightwingteam.github.io/apiflexy/
+
+No setup required! Explore the interface, browse API providers, and test the UI immediately.
+
+### Option 2: One-Command Local Setup (Full Features)
 ```bash
 git clone https://github.com/Nightwingteam/apiflexy.git
 cd apiflexy
 ./start-phase1.sh
 ```
 
-### Option 2: Manual Setup
+### Option 3: Manual Setup
 ```bash
 # Backend
 cd backend
@@ -54,7 +60,7 @@ cd frontend
 npm start
 ```
 
-**That's it!** ApiFlexy will be running at:
+**Local URLs:**
 - Frontend: http://localhost:3000
 - Backend API: http://localhost:8000
 
@@ -62,11 +68,11 @@ npm start
 
 | Component | Status | URL | Details |
 |-----------|--------|-----|---------|
-| 🌐 Frontend | ✅ **LIVE** | http://localhost:3000 | React 18, Mobile-responsive |
-| 🔧 Backend | ✅ **LIVE** | http://localhost:8000 | Flask 3.1.1, Python 3.13 |
+| 🌐 Live Demo | ✅ **PUBLIC** | https://nightwingteam.github.io/apiflexy/ | GitHub Pages, No auth required |
+| 🔧 Local Backend | ✅ **READY** | http://localhost:8000 | Flask 3.1.1, Python 3.13 |
 | 📡 API Providers | ✅ **134+ Active** | `/api/providers` | All categories working |
 | 📱 Mobile UI | ✅ **Optimized** | All breakpoints | Touch-friendly design |
-| 🚀 Vercel Deploy | ✅ **Deployed** | [Live URL](https://apiflexy-k3yxd3fsh-nightwings-projects-ae973569.vercel.app) | Production build |
+| 🚀 Production Build | ✅ **DEPLOYED** | 570KB gzipped | Optimized performance |
 
 ## 🎯 Supported API Categories
 
@@ -121,7 +127,7 @@ ApiFlexy supports **134+ API providers** across these categories:
 
 ## 📱 Mobile Experience
 
-ApiFlexy now features a **complete mobile-responsive design**:
+ApiFlexy features a **complete mobile-responsive design**:
 
 - **📱 Mobile Layout**: Dedicated mobile navigation with drawer
 - **👆 Touch-Friendly**: Optimized button sizes and interactions  
@@ -154,20 +160,22 @@ npm run build
 
 ## 🚀 Deployment
 
-### Vercel (Current)
+### GitHub Pages (Current)
+The live demo is automatically deployed to GitHub Pages via GitHub Actions.
+
+**Live URL**: https://nightwingteam.github.io/apiflexy/
+
+### Manual Deployment
 ```bash
-vercel --prod
+# Deploy to GitHub Pages
+./deploy-github-pages.sh
 ```
-
-**Current Deployment**: https://apiflexy-k3yxd3fsh-nightwings-projects-ae973569.vercel.app
-
-*Note: Vercel deployment requires team authentication. Use local development for full access.*
 
 ### Alternative Deployments
 - **Netlify**: Static frontend deployment
-- **Heroku**: Full-stack deployment
 - **Railway**: Modern cloud deployment
 - **Docker**: Containerized deployment
+- **Self-hosted**: Any static hosting service
 
 ## 📋 API Documentation
 
@@ -206,10 +214,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🆘 Support
 
-- **📧 Email**: support@apiflexy.com
-- **💬 Discord**: [Join our community](https://discord.gg/apiflexy)
+- **🌐 Live Demo**: https://nightwingteam.github.io/apiflexy/
 - **🐛 Issues**: [GitHub Issues](https://github.com/Nightwingteam/apiflexy/issues)
-- **📖 Docs**: [Full Documentation](https://docs.apiflexy.com)
+- **💬 Discussions**: [GitHub Discussions](https://github.com/Nightwingteam/apiflexy/discussions)
+- **📖 Documentation**: Available in the repository
 
 ## 🌟 Star History
 
@@ -219,4 +227,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Made with ❤️ by the ApiFlexy Team**
 
-*Transform your API interactions with the power of AI - now mobile-ready and production-deployed!*
+*Transform your API interactions with the power of AI - now live and publicly accessible!*
+
+**🌍 Try it now**: https://nightwingteam.github.io/apiflexy/
