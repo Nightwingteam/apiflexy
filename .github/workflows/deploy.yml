@@ -1,36 +1,55 @@
-name: Deploy to GitHub Pages
+name: Deploy to GitHub Pages (Disabled - Billing Issue)
+
+# TEMPORARILY DISABLED DUE TO BILLING ISSUE
+# Fix billing at: https://github.com/settings/billing
+# Then uncomment the workflow below and remove this placeholder
 
 on:
-  push:
-    branches: [ main ]
+  # Disabled - no triggers
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
-  deploy:
+  placeholder:
+    if: false  # This job will never run
     runs-on: ubuntu-latest
-    
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-      
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        
-    - name: Install dependencies
-      working-directory: ./frontend
-      run: npm ci
-        
-    - name: Build
-      working-directory: ./frontend
-      run: npm run build
-        
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./frontend/build 
+    - name: Billing Issue Notice
+      run: |
+        echo "GitHub Actions disabled due to billing issue"
+        echo "Fix billing at: https://github.com/settings/billing"
+        echo "Use manual deployment: ./deploy-github-pages.sh"
+
+# ORIGINAL WORKFLOW (COMMENTED OUT):
+# 
+# on:
+#   push:
+#     branches: [ main ]
+#   workflow_dispatch:
+# 
+# permissions:
+#   contents: write
+# 
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v4
+#     - name: Setup Node.js
+#       uses: actions/setup-node@v4
+#       with:
+#         node-version: '18'
+#     - name: Install dependencies
+#       working-directory: ./frontend
+#       run: npm ci
+#     - name: Build
+#       working-directory: ./frontend
+#       run: npm run build
+#     - name: Deploy
+#       uses: peaceiris/actions-gh-pages@v3
+#       with:
+#         github_token: ${{ secrets.GITHUB_TOKEN }}
+#         publish_dir: ./frontend/build
+
+# MANUAL DEPLOYMENT ALTERNATIVE:
+# Run: ./deploy-github-pages.sh 
