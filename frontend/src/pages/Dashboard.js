@@ -65,20 +65,49 @@ import {
 } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import api from '../utils/api';
+import { mockProviders, mockConnections, mockHistory, getMockData } from '../utils/mockData';
+
+// Check if we're on GitHub Pages (static hosting)
+const isStaticDeployment = window.location.hostname.includes('github.io') || 
+                          !window.location.hostname.includes('localhost');
 
 const fetchConnections = async () => {
-  const { data } = await api.get('/api/connections');
-  return data;
+  if (isStaticDeployment) {
+    return mockConnections;
+  }
+  try {
+    const { data } = await api.get('/api/connections');
+    return data;
+  } catch (error) {
+    console.warn('Backend not available, using mock data');
+    return mockConnections;
+  }
 };
 
 const fetchHistory = async () => {
-  const { data } = await api.get('/api/history');
-  return data;
+  if (isStaticDeployment) {
+    return mockHistory;
+  }
+  try {
+    const { data } = await api.get('/api/history');
+    return data;
+  } catch (error) {
+    console.warn('Backend not available, using mock data');
+    return mockHistory;
+  }
 };
 
 const fetchProviders = async () => {
-  const { data } = await api.get('/api/providers');
-  return data;
+  if (isStaticDeployment) {
+    return mockProviders;
+  }
+  try {
+    const { data } = await api.get('/api/providers');
+    return data;
+  } catch (error) {
+    console.warn('Backend not available, using mock data');
+    return mockProviders;
+  }
 };
 
 function Dashboard() {
@@ -86,22 +115,37 @@ function Dashboard() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [selectedTab, setSelectedTab] = useState(0);
-  const [realTimeMode, setRealTimeMode] = useState(true);
+  const [realTimeMode, setRealTimeMode] = useState(!isStaticDeployment);
   const [currentTime, setCurrentTime] = useState(new Date());
   
   const { data: connections = [], isLoading: connectionsLoading } = useQuery(
     'connections',
     fetchConnections,
-    { refetchInterval: realTimeMode ? 30000 : false }
+    { 
+      refetchInterval: realTimeMode ? 30000 : false,
+      staleTime: isStaticDeployment ? Infinity : 5000,
+      cacheTime: isStaticDeployment ? Infinity : 300000
+    }
   );
   
   const { data: history = [], isLoading: historyLoading } = useQuery(
     'history',
     fetchHistory,
-    { refetchInterval: realTimeMode ? 30000 : false }
+    { 
+      refetchInterval: realTimeMode ? 30000 : false,
+      staleTime: isStaticDeployment ? Infinity : 5000,
+      cacheTime: isStaticDeployment ? Infinity : 300000
+    }
   );
   
-  const { data: providers = [] } = useQuery('providers', fetchProviders);
+  const { data: providers = [] } = useQuery(
+    'providers', 
+    fetchProviders,
+    {
+      staleTime: isStaticDeployment ? Infinity : 5000,
+      cacheTime: isStaticDeployment ? Infinity : 300000
+    }
+  );
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
@@ -126,6 +170,16 @@ function Dashboard() {
   // Real Performance Data for API Connector
   const performanceMetrics = [
     {
+      title: 'Available APIs',
+      value: totalAPIsAvailable,
+      change: '+12 new',
+      trend: 'up',
+      icon: <ApiIcon />,
+      color: 'primary',
+      description: 'Ready to connect',
+      details: 'Total number of API providers available for integration',
+    },
+    {
       title: 'API Success Rate',
       value: `${successRate}%`,
       change: successRate > 95 ? '+2.1%' : '-1.3%',
@@ -140,8 +194,8 @@ function Dashboard() {
       value: activeConnections,
       change: `+${newConnectionsThisWeek}`,
       trend: 'up',
-      icon: <ApiIcon />,
-      color: 'primary',
+      icon: <NetworkCheckIcon />,
+      color: 'secondary',
       description: 'Connected APIs',
       details: 'Number of APIs currently connected and configured',
     },
@@ -155,21 +209,11 @@ function Dashboard() {
       description: 'Lifetime queries',
       details: 'Total number of API queries processed',
     },
-    {
-      title: 'Avg Response Time',
-      value: `${avgResponseTime}ms`,
-      change: '-15ms',
-      trend: 'up',
-      icon: <SpeedIcon />,
-      color: 'secondary',
-      description: 'Query performance',
-      details: 'Average response time across all API calls',
-    },
   ];
 
   // Real API Performance Data based on actual providers
   const getAPIPerformanceData = () => {
-    const popularAPIs = ['openai', 'github', 'stripe', 'weather', 'twitter', 'youtube', 'spotify'];
+    const popularAPIs = ['openai', 'github', 'stripe', 'openweathermap', 'twitter', 'youtube', 'spotify'];
     return providers
       .filter(provider => popularAPIs.includes(provider.key))
       .slice(0, 5)
@@ -177,14 +221,17 @@ function Dashboard() {
         const requests = Math.floor(Math.random() * 1000) + 100;
         const successRate = 95 + Math.random() * 5;
         const avgLatency = 80 + Math.random() * 200;
-        const hasConnection = connections.some(conn => conn.name.toLowerCase().includes(provider.name.toLowerCase()));
+        const hasConnection = connections.some(conn => 
+          conn.name.toLowerCase().includes(provider.name.toLowerCase()) ||
+          conn.base_url.toLowerCase().includes(provider.key)
+        );
         
         return {
           name: provider.name,
-          requests: hasConnection ? requests : 0,
-          successRate: hasConnection ? successRate : 0,
-          avgLatency: hasConnection ? Math.round(avgLatency) : 0,
-          status: hasConnection ? (successRate > 98 ? 'excellent' : successRate > 95 ? 'good' : 'warning') : 'disconnected',
+          requests: hasConnection ? requests : Math.floor(requests * 0.1),
+          successRate: hasConnection ? successRate : successRate - 10,
+          avgLatency: hasConnection ? Math.round(avgLatency) : Math.round(avgLatency * 1.5),
+          status: hasConnection ? (successRate > 98 ? 'excellent' : successRate > 95 ? 'good' : 'warning') : 'available',
           lastError: successRate < 96 ? '2 hours ago' : null,
           connected: hasConnection,
           category: provider.category || 'API'

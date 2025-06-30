@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Box, CssBaseline, ThemeProvider, createTheme, useMediaQuery } from '@mui/material';
+import { Box, CssBaseline, ThemeProvider, createTheme, useMediaQuery, Alert, AlertTitle } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -20,6 +20,10 @@ import Notifications from './pages/Notifications';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import MobileLayout from './components/MobileLayout';
+
+// Check if we're on GitHub Pages (static hosting)
+const isStaticDeployment = window.location.hostname.includes('github.io') || 
+                          !window.location.hostname.includes('localhost');
 
 // Modern theme with better colors and typography
 const theme = createTheme({
@@ -109,6 +113,15 @@ const ContentArea = styled(Box)(({ theme }) => ({
   overflow: 'hidden',
 }));
 
+const DemoBanner = styled(Alert)(({ theme }) => ({
+  margin: 0,
+  borderRadius: 0,
+  '& .MuiAlert-message': {
+    width: '100%',
+    textAlign: 'center',
+  },
+}));
+
 function App() {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -130,6 +143,13 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      {isStaticDeployment && (
+        <DemoBanner severity="info" variant="filled">
+          <strong>🎉 Live Demo:</strong> You're viewing ApiFlexy on GitHub Pages! 
+          This demo shows 48+ API providers with sample data. 
+          For full functionality, run locally with the backend.
+        </DemoBanner>
+      )}
       {isMobile ? (
         <MobileLayout>
           {routes}

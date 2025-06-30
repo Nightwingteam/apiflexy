@@ -51,17 +51,49 @@ import {
   Verified as VerifiedIcon,
 } from '@mui/icons-material';
 import api from '../utils/api';
+import { mockProviders } from '../utils/mockData';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
+// Check if we're on GitHub Pages (static hosting)
+const isStaticDeployment = window.location.hostname.includes('github.io') || 
+                          !window.location.hostname.includes('localhost');
+
 const fetchProviders = async () => {
-  const { data } = await api.get('/api/providers');
-  return data;
+  if (isStaticDeployment) {
+    return mockProviders;
+  }
+  try {
+    const { data } = await api.get('/api/providers');
+    return data;
+  } catch (error) {
+    console.warn('Backend not available, using mock data');
+    return mockProviders;
+  }
 };
 
 const fetchProviderCategories = async () => {
-  const { data } = await api.get('/api/providers/categories');
-  return data;
+  if (isStaticDeployment) {
+    // Generate categories from mock data
+    const categories = mockProviders.reduce((acc, provider) => {
+      const category = provider.category || 'Other';
+      acc[category] = (acc[category] || 0) + 1;
+      return acc;
+    }, {});
+    return categories;
+  }
+  try {
+    const { data } = await api.get('/api/providers/categories');
+    return data;
+  } catch (error) {
+    console.warn('Backend not available, generating categories from mock data');
+    const categories = mockProviders.reduce((acc, provider) => {
+      const category = provider.category || 'Other';
+      acc[category] = (acc[category] || 0) + 1;
+      return acc;
+    }, {});
+    return categories;
+  }
 };
 
 function TabPanel(props) {
