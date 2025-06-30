@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/apiflexy/static/css/main.26faccad.css",
-    "main.js": "/apiflexy/static/js/main.0b08a36f.js",
+    "main.js": "/apiflexy/static/js/main.d7b92927.js",
     "index.html": "/apiflexy/index.html",
     "main.26faccad.css.map": "/apiflexy/static/css/main.26faccad.css.map",
-    "main.0b08a36f.js.map": "/apiflexy/static/js/main.0b08a36f.js.map"
+    "main.d7b92927.js.map": "/apiflexy/static/js/main.d7b92927.js.map"
   },
   "entrypoints": [
     "static/css/main.26faccad.css",
-    "static/js/main.0b08a36f.js"
+    "static/js/main.d7b92927.js"
   ]
 }
